@@ -29,7 +29,8 @@ module Sass
     protected
 
     def resolver
-      options[:custom][:resolver]
+      Resolver.new(CompassRails.context)
+      #options[:custom][:resolver]
     end
 
     def public_path(asset, kind)
