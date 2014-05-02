@@ -29,8 +29,11 @@ module Sass
     protected
 
     def resolver
-      Resolver.new(CompassRails.context)
-      #options[:custom][:resolver]
+      if ::Rails::env == "production"
+        options[:custom][:resolver]
+      else
+        Resolver.new(CompassRails.context)
+      end
     end
 
     def public_path(asset, kind)
